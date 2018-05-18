@@ -11,6 +11,8 @@
 
 @interface JTBPhotoListCell : UICollectionViewCell
 
+@property (nonatomic,strong) void(^selectBlock)();
+
 -(void)updatePhotoItem:(JTBPhotoModel *)photo;
 
 @end

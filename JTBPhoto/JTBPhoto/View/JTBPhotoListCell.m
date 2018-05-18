@@ -23,32 +23,33 @@
     if (self) {
         
         
-        _photo = [[UIImageView alloc]initWithFrame:self.bounds];
-        
-        _photo.layer.masksToBounds = YES;
-        
-        _photo.contentMode = UIViewContentModeScaleAspectFill;
-        
-        [self.contentView addSubview:_photo];
+        self.photo = [[UIImageView alloc]initWithFrame:self.bounds];
+        self.photo.layer.masksToBounds = YES;
+        self.photo.contentMode = UIViewContentModeScaleAspectFill;
+        [self.contentView addSubview:self.photo];
         
         
-        CGFloat btnSize = self.frame.size.width / 4;
-
+        CGFloat btnSize = 16;
         self.selectBtn = [[UIButton alloc]initWithFrame:CGRectMake(self.frame.size.width - btnSize - 5, 5, btnSize, btnSize)];
         [self.selectBtn addTarget:self action:@selector(selectPhotoButtonMethod:) forControlEvents:UIControlEventTouchUpInside];
+        [self.selectBtn setImage:[UIImage imageNamed:@"asset_selectedOrigion_normal"] forState:UIControlStateNormal];
+        [self.selectBtn setImage:[UIImage imageNamed:@"asset_selectedOrigion_selected"] forState:UIControlStateSelected];
         [self.contentView addSubview:self.selectBtn];
         
     }
     return self;
 }
 
+- (void)selectPhotoButtonMethod:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    if (self.selectBlock) {
+        self.selectBlock();
+    }
+}
+
 -(void)updatePhotoItem:(JTBPhotoModel *)photo
 {
-//    if (photo.isSelect == YES) {
-//        [_selectBtn setImage:Pic_Btn_Selected forState:UIControlStateNormal];
-//    }else{
-//        [_selectBtn setImage:Pic_btn_UnSelected forState:UIControlStateNormal];
-//    }
+    self.selectBtn.selected = photo.isSelect;
     
     if ([photo isKindOfClass:[JTBPhotoModel class]]) {
         

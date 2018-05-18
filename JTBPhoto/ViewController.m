@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "JTBPhotoController.h"
+#import "PhotoShowView.h"
 
 @interface ViewController ()
 
@@ -21,6 +22,10 @@
     photoSelectBtn.backgroundColor = [UIColor redColor];
     [photoSelectBtn addTarget:self action:@selector(photoSelect) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:photoSelectBtn];
+    
+    PhotoShowView *photoView = [[PhotoShowView alloc] initWithFrame:CGRectMake(0, 220, kScreenWidth, 60)];
+    photoView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:photoView];
 }
 
 

@@ -9,6 +9,7 @@
 #import "JTBPhotoListViewController.h"
 #import "JTBPhotoManager.h"
 #import "JTBPhotoListCell.h"
+#import "JTBPhotoModel.h"
 
 
 @interface JTBPhotoListViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
@@ -19,21 +20,23 @@
 @property (nonatomic,strong) NSMutableArray *photoArray;
 @property (strong, nonatomic) UICollectionView *photoCollection;
 
-@property (strong, nonatomic) UILabel *totalNumLabel;
+@property (nonatomic,strong) NSMutableArray *selectArray;
+
+//@property (strong, nonatomic) UILabel *totalNumLabel;
 @end
 
 @implementation JTBPhotoListViewController
 
 #pragma SETUP backButtonUI Method
 
--(UILabel *)totalNumLabel{
-    if (!_totalNumLabel) {
-        _totalNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 20, kScreenWidth, 20)];
-        _totalNumLabel.textColor = [UIColor blackColor];
-        _totalNumLabel.textAlignment = NSTextAlignmentCenter;
-    }
-    return _totalNumLabel;
-}
+//-(UILabel *)totalNumLabel{
+//    if (!_totalNumLabel) {
+//        _totalNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 20, kScreenWidth, 20)];
+//        _totalNumLabel.textColor = [UIColor blackColor];
+//        _totalNumLabel.textAlignment = NSTextAlignmentCenter;
+//    }
+//    return _totalNumLabel;
+//}
 
 - (UIBarButtonItem *)backBtn{
     if (!_backBtn) {
@@ -72,7 +75,30 @@
 }
 
 -(void)cancel{
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if ([self.selectArray count] == 0) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else{
+        if (self.photoResult) {
+            self.photoResult(self.selectArray);
+        }
+    }
+}
+
+#pragma Declaration Array
+-(NSMutableArray *)photoArray
+{
+    if (!_photoArray) {
+        _photoArray = [NSMutableArray array];
+    }
+    return _photoArray;
+}
+
+-(NSMutableArray *)selectArray
+{
+    if (!_selectArray) {
+        _selectArray = [NSMutableArray array];
+    }
+    return _selectArray;
 }
 
 - (void)initInterUI
@@ -103,7 +129,7 @@
 
 - (void)getPhotoListModel {
     self.photoArray = [[JTBPhotoManager ShareManager] getPhotoAssets:self.fetch];
-    self.totalNumLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)self.photoArray.count];
+//    self.totalNumLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)self.photoArray.count];
 }
 
 - (void)setupCollectionView {
@@ -146,9 +172,9 @@
     JTBPhotoListCell *photoCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"JTBPhotoListCell" forIndexPath:indexPath];
     
     
-//    photoCell.selectBlock = ^(){
-//        [self selectPhotoAtIndex:indexPath.row];
-//    };
+    photoCell.selectBlock = ^(){
+        [self selectPhotoAtIndex:indexPath.row];
+    };
     
     [photoCell updatePhotoItem:[self.photoArray objectAtIndex:indexPath.row]];
     
@@ -172,7 +198,22 @@
     //    [self.browserController reloadData];
 }
 
-
+#pragma mark 关键位置，选中的在数组中添加，取消的从数组中减少
+-(void)selectPhotoAtIndex:(NSInteger)index
+{
+    JTBPhotoModel *photo = [self.photoArray objectAtIndex:index];
+    
+    if (photo != nil) {
+        if (photo.isSelect == NO) {
+            photo.isSelect = YES;
+            [self.selectArray addObject:[self.photoArray objectAtIndex:index]];
+        }else{
+            photo.isSelect = NO;
+            [self.selectArray removeObject:[self.photoArray objectAtIndex:index]];
+        }
+    }
+    
+}
 
 
 @end

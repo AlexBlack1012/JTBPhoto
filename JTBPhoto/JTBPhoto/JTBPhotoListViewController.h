@@ -17,6 +17,5 @@
 @property (assign,nonatomic) NSInteger       selectNum;
 @property (assign,nonatomic) BOOL            isAlubSeclect;
 @property (strong,nonatomic) PHFetchResult   *fetch;
-@property (strong,nonatomic) UIColor         *roundColor;
 
 @end

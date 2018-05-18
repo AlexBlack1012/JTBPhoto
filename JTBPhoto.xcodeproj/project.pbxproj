@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC39470B20AE5D5000E124DE /* ImageShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC39470820AE5D4F00E124DE /* ImageShowCell.m */; };
+		EC39470C20AE5D5000E124DE /* PhotoShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC39470920AE5D5000E124DE /* PhotoShowView.m */; };
 		EC8C671D20AD23BD000BD06D /* JTBPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8C671C20AD23BD000BD06D /* JTBPhotoModel.m */; };
 		EC8C672620AD2668000BD06D /* JTBAlbumListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8C672520AD2668000BD06D /* JTBAlbumListCell.m */; };
 		EC8C672920AD26BA000BD06D /* JTBAlbumListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8C672820AD26BA000BD06D /* JTBAlbumListViewController.m */; };
@@ -26,6 +28,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EC39470720AE5D4F00E124DE /* PhotoShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoShowView.h; sourceTree = "<group>"; };
+		EC39470820AE5D4F00E124DE /* ImageShowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageShowCell.m; sourceTree = "<group>"; };
+		EC39470920AE5D5000E124DE /* PhotoShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoShowView.m; sourceTree = "<group>"; };
+		EC39470A20AE5D5000E124DE /* ImageShowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageShowCell.h; sourceTree = "<group>"; };
 		EC8C671B20AD23BD000BD06D /* JTBPhotoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTBPhotoModel.h; sourceTree = "<group>"; };
 		EC8C671C20AD23BD000BD06D /* JTBPhotoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JTBPhotoModel.m; sourceTree = "<group>"; };
 		EC8C672420AD2668000BD06D /* JTBAlbumListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTBAlbumListCell.h; sourceTree = "<group>"; };
@@ -94,6 +100,10 @@
 				ECFCE6C520ABC3C900A816CA /* AppDelegate.m */,
 				ECFCE6C720ABC3C900A816CA /* ViewController.h */,
 				ECFCE6C820ABC3C900A816CA /* ViewController.m */,
+				EC39470A20AE5D5000E124DE /* ImageShowCell.h */,
+				EC39470820AE5D4F00E124DE /* ImageShowCell.m */,
+				EC39470720AE5D4F00E124DE /* PhotoShowView.h */,
+				EC39470920AE5D5000E124DE /* PhotoShowView.m */,
 				ECFCE6CA20ABC3C900A816CA /* Main.storyboard */,
 				ECFCE6CD20ABC3CA00A816CA /* Assets.xcassets */,
 				ECFCE6CF20ABC3CA00A816CA /* LaunchScreen.storyboard */,
@@ -244,6 +254,8 @@
 				ECFCE6F720ABDBE300A816CA /* UIView+JTBLayout.m in Sources */,
 				ECFCE6F020ABD5A400A816CA /* JTBAlubumListModel.m in Sources */,
 				EC8C672620AD2668000BD06D /* JTBAlbumListCell.m in Sources */,
+				EC39470B20AE5D5000E124DE /* ImageShowCell.m in Sources */,
+				EC39470C20AE5D5000E124DE /* PhotoShowView.m in Sources */,
 				ECFCE6C620ABC3C900A816CA /* AppDelegate.m in Sources */,
 				EC8C672920AD26BA000BD06D /* JTBAlbumListViewController.m in Sources */,
 				EC8C673220AD2A50000BD06D /* JTBPhotoListCell.m in Sources */,
