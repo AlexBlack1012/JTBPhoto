@@ -18,8 +18,6 @@
 @interface PhotoShowView()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic,strong) UICollectionView *mediaView;
-@property (nonatomic,assign) CGFloat cellWidth;
-@property (nonatomic,assign) CGFloat cellHeight;
 
 
 @end
@@ -33,12 +31,10 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.showPhotos = [NSMutableArray array];
-        self.cellHeight = frame.size.height;
-        self.cellWidth = self.cellHeight;
         if (!self.mediaView) {
             UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
             layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-            self.mediaView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, self.cellHeight) collectionViewLayout:layout];
+            self.mediaView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 105) collectionViewLayout:layout];
             self.mediaView.scrollEnabled = YES;
             self.mediaView.backgroundColor = [UIColor clearColor];
             [self.mediaView registerClass:[ImageShowCell class] forCellWithReuseIdentifier:@"ImageShowCell"];
@@ -66,15 +62,14 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     ImageShowCell *ccell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageShowCell" forIndexPath:indexPath];
- 
-    
+    ccell.model = self.showPhotos[indexPath.row];
     return ccell;
     
 }
 
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(self.cellWidth, self.cellHeight);
+    return [ImageShowCell ccellSize];
 }
 //- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
 //    return UIEdgeInsetsZero;

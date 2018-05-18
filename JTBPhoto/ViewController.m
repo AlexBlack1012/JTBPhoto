@@ -12,6 +12,8 @@
 
 @interface ViewController ()
 
+@property (nonatomic,strong) PhotoShowView *photoView;
+
 @end
 
 @implementation ViewController
@@ -23,9 +25,9 @@
     [photoSelectBtn addTarget:self action:@selector(photoSelect) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:photoSelectBtn];
     
-    PhotoShowView *photoView = [[PhotoShowView alloc] initWithFrame:CGRectMake(0, 220, kScreenWidth, 60)];
-    photoView.backgroundColor = [UIColor redColor];
+    PhotoShowView *photoView = [[PhotoShowView alloc] initWithFrame:CGRectMake(0, 220, kScreenWidth, 105)];
     [self.view addSubview:photoView];
+    _photoView = photoView;
 }
 
 
@@ -66,7 +68,7 @@
 //            [self addImageToshowCirclectionView:array];
 //            
 //            [circleCollectionView reloadData];
-            
+            self.photoView.showPhotos = responseObject;
         }];
     }];
     

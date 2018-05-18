@@ -81,6 +81,7 @@
         if (self.photoResult) {
             self.photoResult(self.selectArray);
         }
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 

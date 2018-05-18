@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JTBPhotoModel.h"
 
 @interface ImageShowCell : UICollectionViewCell
 
-@property (strong, nonatomic) UIImageView *imgView;
+@property (nonatomic,strong)JTBPhotoModel *model;
 
++(CGSize)ccellSize;
 
 @end

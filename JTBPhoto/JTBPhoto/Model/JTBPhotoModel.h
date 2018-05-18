@@ -10,27 +10,42 @@
 #import <UIKit/UIKit.h>
 #import "JTBPublicConfig.h"
 
+typedef NS_ENUM(NSInteger,ImageDownloadState)
+{
+    ImageDownloadStateInit = 0,
+    ImageDownloadStateIng,
+    ImageDownloadStateSuccess,
+    ImageDownloadStateFail
+};
+
 @interface JTBPhotoModel : NSObject
 
+
+//选取照片的时候
 /**
  资源
  */
 @property (nonatomic, strong) PHAsset *asset;
-/**
- 原尺寸图片
- */
-@property (nonatomic, strong) UIImage *originImage;
-/**
- 照片在手机中的路径
- */
-@property (nonatomic, strong) NSURL *imageUrl;
-/**
- 照片保存到相册中的时间
- */
-@property (nonatomic, copy)   NSDate *createDate;
+
 /**
  判断该图片是否选中
  */
 @property (nonatomic, assign) BOOL isSelect;
+
+//显示照片的时候
+/**
+ 原尺寸图片
+ */
+@property (nonatomic, strong) UIImage *originImage;
+
+/**
+ 缩略图
+ */
+@property (nonatomic,strong) UIImage *thumbnailImage;
+
+/**
+ iCloud 图片下载状态
+ */
+@property (nonatomic,assign) ImageDownloadState downloadState;
 
 @end
